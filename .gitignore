@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.test-dist/
+e2e-mutants-report/
+demo/cypress/screenshots/
+demo/cypress/videos/
+demo/cypress/downloads/
+*.tgz
+.DS_Store

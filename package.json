@@ -1,0 +1,78 @@
+{
+  "name": "e2e-mutants",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Mutation testing for Cypress suites: mutates the JSON responses your app renders and reports which green tests show data without checking it.",
+  "keywords": [
+    "cypress",
+    "cypress-plugin",
+    "mutation-testing",
+    "e2e",
+    "test-quality",
+    "assertions"
+  ],
+  "homepage": "https://github.com/mcello23/e2e-mutants#readme",
+  "bugs": {
+    "url": "https://github.com/mcello23/e2e-mutants/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcello23/e2e-mutants.git"
+  },
+  "license": "MIT",
+  "author": "Marcelo Costa (https://www.marcelo-costa.com)",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./support": {
+      "types": "./dist/cypress/support.d.ts",
+      "default": "./dist/cypress/support.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "support": [
+        "dist/cypress/support.d.ts"
+      ]
+    }
+  },
+  "bin": {
+    "e2e-mutants": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "rm -rf .test-dist && tsc -p tsconfig.test.json && node --test .test-dist/test/*.test.js",
+    "lint": "publint",
+    "demo:weak": "npm run build && node demo/run-demo.mjs cypress/e2e/weak.cy.js",
+    "demo:strong": "npm run build && node demo/run-demo.mjs cypress/e2e/strong.cy.js",
+    "prepack": "npm run build",
+    "demo:server": "node demo/server.mjs"
+  },
+  "peerDependencies": {
+    "cypress": ">=15 <17"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "cypress": "16.3.0",
+    "publint": "^0.3.25",
+    "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "cypress": true
+  }
+}

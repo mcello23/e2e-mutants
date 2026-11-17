@@ -1,0 +1,9 @@
+export const FLAG = 'e2eMutants';
+export const SESSION_ENV = 'E2E_MUTANTS_SESSION';
+export const PLAN_FILE = 'plan.json';
+export const ROUNDS_DIR = 'rounds';
+export const PLAN_TASK = 'e2eMutants:plan';
+export const RECORD_TASK = 'e2eMutants:record';
+export const APPLIED_TASK = 'e2eMutants:applied';
+export const RECORD_SUFFIX = '.record.json';
+export const APPLIED_SUFFIX = '.applied.json';

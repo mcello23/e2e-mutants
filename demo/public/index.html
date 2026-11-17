@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de pedidos</title>
+<style>
+  :root { --bg: #f6f7f9; --card: #fff; --text: #1d2330; --muted: #5d6677; --line: #dfe3ea; --accent: #2f5bd3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.45 system-ui, sans-serif; background: var(--bg); color: var(--text); }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: var(--card); border-bottom: 1px solid var(--line); }
+  main { padding: 24px; display: grid; gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .badge { font-size: 13px; padding: 2px 10px; border-radius: 999px; background: #e8eefc; color: var(--accent); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .kpi span { display: block; color: var(--muted); font-size: 13px; }
+  .kpi strong { font-size: 22px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); }
+  td.num, th.num { text-align: right; }
+  tbody tr[data-cy="order-row"] { cursor: pointer; }
+  tbody tr[data-cy="order-row"]:hover, tr.selected { background: #eef2fb; }
+  .muted { color: var(--muted); }
+  .status { font-size: 13px; padding: 1px 8px; border-radius: 6px; background: #eef0f4; }
+  #detail[hidden] { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <div data-cy="greeting">Carregando…</div>
+  <div class="badge" data-cy="plan"></div>
+</header>
+<main>
+  <section class="kpis" aria-label="Indicadores">
+    <div class="kpi" data-cy="kpi"><span>Receita</span><strong data-cy="kpi-revenue">–</strong></div>
+    <div class="kpi" data-cy="kpi"><span>Pedidos</span><strong data-cy="kpi-orders">–</strong></div>
+    <div class="kpi" data-cy="kpi"><span>Conversão</span><strong data-cy="kpi-conversion">–</strong></div>
+    <div class="kpi" data-cy="kpi"><span>Atualizado em</span><strong data-cy="kpi-updated">–</strong></div>
+  </section>
+  <section class="panel">
+    <h2>Pedidos recentes <small class="muted" data-cy="orders-count"></small></h2>
+    <table>
+      <thead><tr><th>Pedido</th><th>Cliente</th><th>Data</th><th>Status</th><th class="num">Total</th></tr></thead>
+      <tbody data-cy="orders-body"></tbody>
+    </table>
+  </section>
+  <section class="panel" id="detail" data-cy="order-detail" hidden>
+    <h2 data-cy="detail-title"></h2>
+    <p data-cy="detail-customer"></p>
+    <table>
+      <thead><tr><th>SKU</th><th>Produto</th><th class="num">Qtd.</th><th class="num">Preço</th><th class="num">Subtotal</th></tr></thead>
+      <tbody data-cy="detail-items"></tbody>
+      <tfoot><tr><th colspan="4">Total</th><th class="num" data-cy="detail-total"></th></tr></tfoot>
+    </table>
+    <p class="muted">Observações: <span data-cy="detail-notes"></span></p>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
