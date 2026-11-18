@@ -2,7 +2,9 @@
 
 Mutation testing for Cypress suites. e2e-mutants changes the JSON responses your app renders, one value at a time, and reruns the test that showed that value. When the test still passes, it put the value on screen without checking it. The report lists those survivors with the endpoint, the JSON path, the old and new value, and the text on the page where the value appeared.
 
-Status: v0.1, not yet published to npm. It works on the demo in this repository with Cypress 16.3.0 and Electron on Linux. Cypress 15.21.2 and 15.7.0 passed a small lab spec, not the full demo. Everything else is untested.
+[![npm](https://img.shields.io/npm/v/e2e-mutants)](https://www.npmjs.com/package/e2e-mutants) [![CI](https://github.com/mcello23/e2e-mutants/actions/workflows/ci.yml/badge.svg)](https://github.com/mcello23/e2e-mutants/actions/workflows/ci.yml)
+
+Status: v0.1, on npm since 2026-11-18. It works on the demo in this repository with Cypress 16.3.0 and Electron on Linux. Cypress 15.21.2 and 15.7.0 passed a small lab spec, not the full demo. Everything else is untested.
 
 ## The problem
 
@@ -42,14 +44,10 @@ Sensitive fields are never mutated and never shown. A sensitive value that the a
 
 ## Quickstart
 
-Install it as a dev dependency next to Cypress (15 or 16). Until it is on npm, install it from a checkout:
+Install it as a dev dependency next to Cypress (15 or 16):
 
 ```bash
-cd /path/to/e2e-mutants
-npm install
-npm pack
-cd /path/to/your-project
-npm install --save-dev /path/to/e2e-mutants/e2e-mutants-0.1.0.tgz
+npm install --save-dev e2e-mutants
 ```
 
 In the Cypress config, call `setupE2eMutants` in `setupNodeEvents` and return what it returns:
